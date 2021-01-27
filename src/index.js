@@ -1,10 +1,11 @@
 import React from 'react';
 import ReactDom from 'react-dom';
+import './index.css'
 
 //This is a main component
 const Booklist = () => { 
     return (
-    <section>
+    <section className="booklist">
         <Book />
         <Book />
         <Book />
@@ -17,7 +18,7 @@ const Booklist = () => {
 };
 
 const Book = () => {
-    return <article>
+    return <article className="book">
         <Image />
         <Title />
         <Author />
@@ -30,7 +31,7 @@ const Image = () => {
 
 const Author = () => <h3>Napoleon Hill</h3>
 
-const Title = () => <h2>Think and Grow Rich: The Landmark Bestseller Now Revised and Updated for the 21st Century (Think and Grow Rich Series)</h2>
+const Title = () => <h4>Think and Grow Rich: The Landmark Bestseller Now Revised and Updated for the 21st Century (Think and Grow Rich Series)</h4>
 
 
 
