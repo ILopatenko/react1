@@ -2,29 +2,43 @@ import React from 'react';
 import ReactDom from 'react-dom';
 
 //This is a main component
-const MyAppGeneralModule = () => { 
+const Booklist = () => { 
     return (
-    <div>
-        <MyModule1 />
-        <MyModule2 />
-
-    </div>
+    <section>
+        <Book />
+        <Book />
+        <Book />
+        <Book />
+        <Book />
+        <Book />
+        <Book />
+    </section>
     );
 };
 
-//An example of regular function wich returns a block <h4> with some text using createElement functoin of React
-function MyModule1() {
-    return React.createElement('h4', {}, 'Hello from non-arrow function');
+const Book = () => {
+    return <article>
+        <Image />
+        <Title />
+        <Author />
+    </article>;
 };
 
-const MyModule2 = () => { 
-    return (
-    <div>
-        <h4>MyConponent v.0</h4>
-    </div>
-    );
+const Image = () => {
+    return <img src="https://images-na.ssl-images-amazon.com/images/I/61y04z8SKEL._SX349_BO1,204,203,200_.jpg" alt=""/>
 };
 
-ReactDom.render(<MyAppGeneralModule />, document.getElementById('root'));
+const Author = () => <h3>Napoleon Hill</h3>
+
+const Title = () => <h2>Think and Grow Rich: The Landmark Bestseller Now Revised and Updated for the 21st Century (Think and Grow Rich Series)</h2>
+
+
+
+
+
+
+
+
+ReactDom.render(<Booklist />, document.getElementById('root'));
 
 
