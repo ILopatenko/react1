@@ -31,6 +31,7 @@ body {
   padding: 1rem 2rem;
 }
 
-.book h1 {
+.book h1 h3 {
   margin-top: 0.5rem;
+  letter-spacing: 5px;
 }
