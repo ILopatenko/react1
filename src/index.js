@@ -19,23 +19,41 @@ const secondBook = {
 const Booklist = () => { 
     return (
     <section className="booklist">
-        <Book img={firstBook.img} title={firstBook.title} author={firstBook.author}/>
-        <Book img={secondBook.img} title={secondBook.title} author={secondBook.author}/>
+        <Book1 img={firstBook.img} title={firstBook.title} author={firstBook.author}>
+        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aperiam beatae excepturi sint inventore praesentium consequuntur! Sed sequi officiis eveniet, excepturi ipsa, ducimus natus ipsam numquam eligendi cum rerum qui cumque?</p>
+        </Book1>
+
+        <Book2 img={secondBook.img} title={secondBook.title} author={secondBook.author}>
+            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit.</p>
+        </Book2>
     </section>
     );
 };
 
-const Book = ({img, author, title}) => {
+const Book1 = ({img, author, title, children}) => {
+    return <article className="book">
+       <img src={img} alt=""/>
+       <h2>{author.toUpperCase()}</h2>
+       <h4>{title}</h4>
+       {children}
+    </article>;
+};
+
+
+const Book2 = (props) => {
 
     //Destruct object to const variables
-    //const {img, title, author} = props;
+    const {img, title, author} = props;
 
     return <article className="book">
        <img src={img} alt=""/>
        <h2>{author.toUpperCase()}</h2>
        <h4>{title}</h4>
+       {props.children}
     </article>;
 };
+
+
 
 ReactDom.render(<Booklist />, document.getElementById('root'));
 
