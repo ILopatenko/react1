@@ -25,9 +25,10 @@ const Booklist = () => {
     );
 };
 
-const Book = (props) => {
+const Book = ({img, author, title}) => {
 
-    const {img, title, author} = props;
+    //Destruct object to const variables
+    //const {img, title, author} = props;
 
     return <article className="book">
        <img src={img} alt=""/>
