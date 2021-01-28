@@ -26,10 +26,13 @@ const Booklist = () => {
 };
 
 const Book = (props) => {
+
+    const {img, title, author} = props;
+
     return <article className="book">
-       <img src={props.img} alt=""/>
-       <h2>{props.author.toUpperCase()}</h2>
-       <h4>{props.title}</h4>
+       <img src={img} alt=""/>
+       <h2>{author.toUpperCase()}</h2>
+       <h4>{title}</h4>
     </article>;
 };
 
