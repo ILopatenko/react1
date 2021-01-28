@@ -31,7 +31,7 @@ function BookList() {
     <section className="booklist">
         {books.map((book) => {
             return (
-                <Book key={book.id} book={book}></Book>
+                <Book key={book.id} {...book}></Book>
             );
         })} 
     </section>
@@ -40,13 +40,22 @@ function BookList() {
 
 //Setup Component Book - it will return a description for each book
 const Book = (props) => {
-    console.log(props);
-    const {img, title, author} = props.book;
+
+
+
+    //Create a handler for an event
+    const clickHandler = () => {
+        alert(`you have pushed the button at book: ${author}!`);
+    };
+
+
+    const {img, title, author} = props;
     return (
         <article className="book">
         <img src={img} alt=""/>
-        <h2>{author}</h2>
+        <h2 onClick={() => console.log(`You have toched: ${title}`)}>{author}</h2>
         <h4>{title}</h4>
+        <button type="button" onClick={clickHandler}>example</button>
         </article>
     );
 };
