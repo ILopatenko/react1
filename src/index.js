@@ -53,7 +53,9 @@ const Book = (props) => {
 
     const {img, title, author} = props;
     return (
-        <article className="book">
+        <article className="book" onMouseOver={() => {
+            console.log(title);
+        }}>
         <img src={img} alt=""/>
         <h2 onClick={() => console.log(`You have toched: ${title}`)}>{author}</h2>
         <h4>{title}</h4>
