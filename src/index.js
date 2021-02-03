@@ -1,6 +1,9 @@
 import React from 'react';
 import ReactDom from 'react-dom';
 import './index.css';
+
+
+//Import data from other places/files
 import {books} from "./books";
 import { Book } from "./Book";
 import { greeting } from "../src/testing/testing";
