@@ -20,7 +20,7 @@ const UseStateBasics = () => {
   
   return <React.Fragment>
     <h1>{text}</h1>
-    <button className="btn" onClick={handleClick}> Let's try to change the title</button>
+    <button className="btn" onClick={handleClick}> Don't like this title? Change it to: "{text !== initialTitle ? initialTitle : newTitle}"</button>
     </React.Fragment>
 };
 
