@@ -12,7 +12,7 @@ const ShortCircuit = () => {
     <h2>{text || 'hello'}</h2>
     <button className='btn' onClick={()=>{setIsError(!isError)}}>{isError ? 'Delete an error': 'Create an error'}</button>
     <h4>Current status of errors:</h4>
-    {isError ? <p>!!!WE HAVE GOT A BIG FAT ERROR!!!</p>: <p>ALL GREAT! No any errors!</p>}
+    {isError ? <p>!!!WE HAVE GOT A <h4>BIG FAT ERROR!!!</h4></p>: <p>ALL GREAT! No any errors!</p>}
   </>
 };
 
