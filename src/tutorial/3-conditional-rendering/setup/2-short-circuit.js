@@ -5,13 +5,14 @@ import React, { useState } from 'react';
 const ShortCircuit = () => {
 
   const [text, setText] = useState('');
+  const [isError, setIsError] = useState(false);
 
-  /* const firstValue = text || 'hello world';
-  const secondValue = text && 'hello world'; */
-
+  
   return <>
     <h2>{text || 'hello'}</h2>
-    {!text && <h2>hello world!</h2>}
+    <button className='btn' onClick={()=>{setIsError(!isError)}}>{isError ? 'Delete an error': 'Create an error'}</button>
+    <h4>Current status of errors:</h4>
+    {isError ? <p>!!!WE HAVE GOT A BIG FAT ERROR!!!</p>: <p>ALL GREAT! No any errors!</p>}
   </>
 };
 
