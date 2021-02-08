@@ -6,7 +6,47 @@ import React, { useState } from 'react';
 // value, onChange
 
 const ControlledInputs = () => {
-  return <h1>controlled inputs</h1>;
+  const [firstName, setFirstName] = useState('');
+  const [email, setEmail] = useState('');
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(`you submited first name: ${firstName} and email: ${email}`);
+  };
+
+  return (
+    <>
+      <article>
+        <form className='form'>
+          <div className='form-control'>
+            <label htmlFor='firstName'>Name: </label>
+            <input
+              type='text'
+              id='firstName'
+              name='firstName'
+              value={firstName}
+              onChange={(e) => setFirstName(e.target.value)}
+            />
+          </div>
+
+          <div className='form-control'>
+            <label htmlFor='email'>Email: </label>
+            <input
+              type='text'
+              id='email'
+              name='email'
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+          </div>
+
+          <button type='button' onClick={handleSubmit}>
+            add a person
+          </button>
+        </form>
+      </article>
+    </>
+  );
 };
 
 export default ControlledInputs;
