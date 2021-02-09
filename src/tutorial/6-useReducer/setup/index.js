@@ -1,30 +1,28 @@
 import React, { useState, useReducer } from 'react';
 import Modal from './Modal';
 import { data } from '../../../data';
-// reducer function
-const reducer = (state, action) => {};
-
-const defaultState = {
-  people: data,
-  isModuleOpen: true,
-  modalContent: 'hello from modalContent',
-};
 
 const Index = () => {
   const [name, setName] = useState('');
-
-  const [state, dispatch] = useReducer(reducer, defaultState);
-
+  const [people, setPeople] = useState(data);
+  const [showModal, setShowModal] = useState(false);
   const handleSubmit = (e) => {
     e.preventDefault();
     if (name) {
+      setShowModal(true);
+      setPeople([...people, { id: new Date().getTime().toString(), name }]);
+      setName('');
     } else {
+      setShowModal(true);
     }
   };
 
   return (
     <>
-      {state.isModuleOpen && <Modal modalContent={state.modalContent} />}
+      <div>
+        <h3>Enter a name of a new client and hit the button</h3>
+      </div>
+      {showModal && <Modal />}
       <form onSubmit={handleSubmit} className='form'>
         <div>
           <input
@@ -33,17 +31,19 @@ const Index = () => {
             onChange={(e) => setName(e.target.value)}
           />
         </div>
-        <button type='submit' className='button'>
-          Add an item to list
+        <button type='submit' className='btn'>
+          Add a new user
         </button>
       </form>
-      {state.people.map((el) => {
-        return (
+
+      <form className='form'>
+        <h3>List of all the clients:</h3>
+        {people.map((el) => (
           <div key={el.id}>
-            <h4>{el.name}</h4>
+            Client name is {el.name.toUpperCase()} and his unique ID is {el.id}
           </div>
-        );
-      })}
+        ))}
+      </form>
     </>
   );
 };
