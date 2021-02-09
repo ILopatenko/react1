@@ -5,13 +5,24 @@ import React, { useState } from 'react';
 // React
 // value, onChange
 
+//Create a main component
 const ControlledInputs = () => {
   const [firstName, setFirstName] = useState('');
   const [email, setEmail] = useState('');
+  const [people, setPeople] = useState([]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(`you submited first name: ${firstName} and email: ${email}`);
+    if (firstName && email && firstName !== '' && email !== '') {
+      const person = { id: new Date().getTime().toString(), firstName, email };
+      setPeople((people) => {
+        return [...people, person];
+      });
+
+      setFirstName('');
+      setEmail('');
+    } else {
+    }
   };
 
   return (
@@ -44,6 +55,17 @@ const ControlledInputs = () => {
             add a person
           </button>
         </form>
+
+        {people.map((person) => {
+          const { id, firstName, email } = person;
+          return (
+            <div className='item' key={id}>
+              <h4>{firstName}</h4>
+              <p>{email}</p>
+              <p>{id}</p>
+            </div>
+          );
+        })}
       </article>
     </>
   );
