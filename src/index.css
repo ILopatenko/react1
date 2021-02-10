@@ -168,7 +168,7 @@ p {
 .btn:hover {
   background: wheat;
   color: red;
-  font-size: 1.1rem;
+  font-size: 1.05rem;
   text-transform: uppercase;
   border-color: rgb(47, 0, 255);
 }

@@ -19,6 +19,13 @@ const reducer = (state, action) => {
       isModalOpen: true,
       modalContent: 'Item was added',
     };
+  }
+  if (action.type === 'NO_VALUE') {
+    return {
+      ...state,
+      isModalOpen: true,
+      modalContent: 'Name is empty',
+    };
   } else {
     throw new Error('Try again!');
   }
@@ -44,7 +51,7 @@ const Index = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     //Check if name exists and not an empty string
-    if (name) {
+    if (name && name.trim() !== '') {
       //Logic block for case when name exists and not an empty string
       //Create an object with data from text input (name) and generate an unique ID with new Date().getTime().toString()
       const newClient = {
@@ -53,10 +60,12 @@ const Index = () => {
       };
       //Call dispatch with an object as a parameter (dispatch state). Object should contain ACTION TYPE! and can contain a payload
       dispatch({ type: 'ADD_ITEM', payload: newClient });
+      setName('');
     }
-    //Logic block for case when name doesn't exist or an empty string
-    else {
-      dispatch({ type: 'ERROR' });
+
+    if (name.trim() === '') {
+      dispatch({ type: 'NO_VALUE' });
+      setName('');
     }
   };
   return (
@@ -87,6 +96,14 @@ const Index = () => {
             Client name is {el.name.toUpperCase()} and an unique ID is {el.id}
           </div>
         ))}
+
+        {/* Just a text note for future users */}
+        <div>
+          <h4>
+            For this moment we have got {state.people.length} clients in our
+            database!
+          </h4>
+        </div>
       </form>
     </>
   );
