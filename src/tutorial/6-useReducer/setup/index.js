@@ -1,6 +1,5 @@
 import React, { useState, useReducer } from 'react';
 import Modal from './Modal';
-import { data } from '../../../data';
 
 //What is reducer function?
 //It gets a specific state and an action to do (ACTION TYPE). Action describes what needs to do with a state (how to modify it).
@@ -17,14 +16,34 @@ const reducer = (state, action) => {
       ...state,
       people: allClients,
       isModalOpen: true,
-      modalContent: 'Item was added',
+      modalContent: 'Client was added',
     };
   }
+
   if (action.type === 'NO_VALUE') {
     return {
       ...state,
       isModalOpen: true,
       modalContent: 'Name is empty',
+    };
+  }
+
+  if (action.type === 'DELETE_CLIENT') {
+    const filteredClients = state.people.filter(
+      (el) => el.id !== action.payload
+    );
+    return {
+      ...state,
+      isModalOpen: true,
+      modalContent: 'Client was deleted',
+      people: filteredClients,
+    };
+  }
+
+  if (action.type === 'CLOSE_MODAL') {
+    return {
+      ...state,
+      isModalOpen: false,
     };
   } else {
     throw new Error('Try again!');
@@ -68,6 +87,11 @@ const Index = () => {
       setName('');
     }
   };
+
+  const closeModal = () => {
+    dispatch({ type: 'CLOSE_MODAL' });
+  };
+
   return (
     <>
       {/* Just a text note for future users */}
@@ -75,7 +99,9 @@ const Index = () => {
         <h3>Enter a name of a new client and hit the button</h3>
       </div>
       {/* Check if isModalOpen is TRUE and module MODAL is exists */}
-      {state.isModalOpen && <Modal modalContent={state.modalContent} />}
+      {state.isModalOpen && (
+        <Modal modalContent={state.modalContent} closeModal={closeModal} />
+      )}
       <form onSubmit={handleSubmit} className='form'>
         <div>
           <input
@@ -92,8 +118,16 @@ const Index = () => {
       <form className='form'>
         <h3>List of all the clients:</h3>
         {state.people.map((el) => (
-          <div key={el.id}>
+          <div key={el.id} className='item'>
             Client name is {el.name.toUpperCase()} and an unique ID is {el.id}
+            <button
+              className='btn'
+              onClick={() => {
+                dispatch({ type: 'DELETE_CLIENT', payload: el.id });
+              }}
+            >
+              Delete
+            </button>
           </div>
         ))}
 

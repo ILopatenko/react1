@@ -191,6 +191,7 @@ p {
 }
 .item {
   padding: 1rem 2rem;
+  background-color: rgba(255, 166, 0, 0.466);
 }
 .item h4 {
   margin-bottom: 0;
