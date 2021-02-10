@@ -152,7 +152,7 @@ p {
 .btn {
   display: inline-block;
   background: var(--clr-primary-5);
-  color: var(--clr-white);
+  color: rgba(255, 0, 0, 0.527);
   padding: 0.25rem 0.75rem;
   border-radius: var(--radius);
   border-color: transparent;
@@ -166,10 +166,9 @@ p {
   transition: var(--transition);
 }
 .btn:hover {
-  background: wheat;
+  background: rgb(230, 187, 108);
   color: red;
   font-size: 1.05rem;
-  text-transform: uppercase;
   border-color: rgb(47, 0, 255);
 }
 .item {
@@ -183,7 +182,7 @@ p {
 }
 .item button,
 .item a {
-  background: transparent;
+  background: red;
   border-color: transparent;
   color: var(--clr-primary-5);
   letter-spacing: var(--spacing);
