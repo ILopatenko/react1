@@ -30,6 +30,8 @@ const ReactRouterSetup = () => {
           <People />
         </Route>
 
+        <Route exact path='/:id' children={<Person />}></Route>
+
         <Route exact path='*'>
           <Error />
         </Route>
